@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>AI Yatri — Plan India, Personally</title>
+<style>
+__CSS__
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <div class="logo">
+      <span class="logo-mark">🧭</span>
+      <div>
+        <div id="app-title">AI Yatri</div>
+      </div>
+    </div>
+    <button id="authBtn" class="auth-btn" type="button">Sign in</button>
+  </div>
+
+  <main id="main-scroll"></main>
+
+  <nav class="bottomnav">
+    <button class="navitem" data-screen="home"><span class="navicon">🏠</span>Home</button>
+    <button class="navitem" data-screen="itinerary"><span class="navicon">🗺️</span>Itinerary</button>
+    <button class="navitem" data-screen="map"><span class="navicon">📍</span>Map</button>
+    <button class="navitem" data-screen="chat"><span class="navicon">💬</span>Chat</button>
+    <button class="navitem" data-screen="profile"><span class="navicon">👤</span>Profile</button>
+  </nav>
+</div>
+
+<script>
+const IMG = {
+  home: "data:image/jpeg;base64,__IMG_HOME__",
+  transport: "data:image/jpeg;base64,__IMG_TRANSPORT__",
+  chat: "data:image/jpeg;base64,__IMG_CHAT__",
+  map: "data:image/jpeg;base64,__IMG_MAP__",
+  profile: "data:image/jpeg;base64,__IMG_PROFILE__",
+  itinerary: "data:image/jpeg;base64,__IMG_ITINERARY__",
+};
+const GOOGLE_MAPS_API_KEY = '';
+</script>
+<script>
+__DATA_JS__
+</script>
+<script>
+__APP_JS__
+</script>
+<script>
+__RENDER_JS__
+</script>
+<script>
+$all('.navitem').forEach(b => b.addEventListener('click', ()=> goScreen(b.dataset.screen)));
+
+function showIntro(){
+  const backdrop = el(`<div class="intro-backdrop" id="introBackdrop">
+    <div class="intro-card">
+      <div class="logo-mark">🧭</div>
+      <h2>Welcome to AI Yatri</h2>
+      <p>Chat once about how you like to travel — then get a personalised day-by-day plan, transport picks, stays, safety info and an offline emergency pack for your India trip.</p>
+      <button class="cta-btn" id="introStart">Start planning</button>
+    </div>
+  </div>`);
+  document.body.appendChild(backdrop);
+  $('#introStart', backdrop).addEventListener('click', ()=>{ backdrop.remove(); goScreen('chat'); });
+}
+
+restoreValidSession();
+render();
+</script>
+</body>
+</html>
